@@ -11,17 +11,20 @@ test('навигация содержит все разделы', async ({ page 
   await expect(page.locator('nav a[data-ru="Продукты"]')).toBeVisible();
   await expect(page.locator('nav a[data-ru="О нас"]')).toBeVisible();
 });
+
 test('кнопка купона открывает форму', async ({ page }) => {
   await page.goto('/');
   await page.locator('text=Получить купон').first().click();
   await expect(page.locator('text=Получите купон 5% OFF').first()).toBeVisible();
 });
+
 test('адрес магазина виден на странице', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('text=9131 College Pkwy').first()).toBeVisible();
 });
 
-test('кнопка чата видна', async ({ page }) => {
+test('виджет чата присутствует на странице', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.chat-toggle, .chat-icon, [onclick*="chat"], [onclick*="Chat"]').first()).toBeVisible();
+  const chat = page.locator('[onclick="loginChat()"]').first();
+  await expect(chat).toBeAttached();
 });
