@@ -1,0 +1,11 @@
+{
+  "name": "europe-market-tests",
+  "version": "1.0.0",
+  "description": "Playwright tests for europemarket.site",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}
